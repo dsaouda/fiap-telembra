@@ -1,4 +1,4 @@
-package com.github.dsaouda.fiaplembrou.model
+package com.github.dsaouda.fiaptelembra.model
 
 import org.hibernate.validator.constraints.Email
 import javax.persistence.*

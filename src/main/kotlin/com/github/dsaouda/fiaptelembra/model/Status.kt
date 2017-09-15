@@ -1,4 +1,4 @@
-package com.github.dsaouda.fiaplembrou.model
+package com.github.dsaouda.fiaptelembra.model
 
 enum class Status {
     ENVIADO_SUCESSO,

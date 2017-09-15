@@ -1,14 +1,13 @@
-package com.github.dsaouda.fiaplembrou.controller
+package com.github.dsaouda.fiaptelembra.controller
 
-import com.github.dsaouda.fiaplembrou.model.Cliente
-import com.github.dsaouda.fiaplembrou.model.Lembrete
-import com.github.dsaouda.fiaplembrou.model.Login
-import com.github.dsaouda.fiaplembrou.model.Pessoa
-import com.github.dsaouda.fiaplembrou.repository.ClienteRepository
-import com.github.dsaouda.fiaplembrou.repository.LembreteRepository
-import com.github.dsaouda.fiaplembrou.repository.LoginRepository
-import com.github.dsaouda.fiaplembrou.repository.PessoaRepository
-import com.github.dsaouda.totalvoice.TotalVoice
+import com.github.dsaouda.fiaptelembra.model.Cliente
+import com.github.dsaouda.fiaptelembra.model.Lembrete
+import com.github.dsaouda.fiaptelembra.model.Login
+import com.github.dsaouda.fiaptelembra.model.Pessoa
+import com.github.dsaouda.fiaptelembra.repository.ClienteRepository
+import com.github.dsaouda.fiaptelembra.repository.LembreteRepository
+import com.github.dsaouda.fiaptelembra.repository.LoginRepository
+import com.github.dsaouda.fiaptelembra.repository.PessoaRepository
 import com.github.dsaouda.totalvoice.data.TTS
 import com.github.dsaouda.totalvoice.service.TTSService
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.*
 
 @RestController
-class ClienteController {
+class ClienteControllerOld {
 
     @Autowired
     lateinit var repository: ClienteRepository
@@ -36,9 +35,9 @@ class ClienteController {
 
     @GetMapping("/")
     fun teste() {
-        val cliente = Cliente(nome="teste", ativo=false)
-        val login = Login(nome="Di", email="diegosaouda@gmail.com", senha="123", cliente=cliente)
-        val pessoa = Pessoa(nome="Diego Saouda", telefone="(11) 995478336", cliente=cliente)
+        val cliente = Cliente(nome = "teste", ativo = false)
+        val login = Login(nome = "Di", email = "diegosaouda@gmail.com", senha = "123", cliente = cliente)
+        val pessoa = Pessoa(nome = "Diego Saouda", telefone = "(11) 995478336", cliente = cliente)
         val lembrete = Lembrete(mensagem = "Olá, isso é um teste", enviarEm = Date(), cliente = cliente, pessoa = pessoa)
 
         repository.save(cliente)
