@@ -41,5 +41,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
 
+	compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.8.8'
+
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
