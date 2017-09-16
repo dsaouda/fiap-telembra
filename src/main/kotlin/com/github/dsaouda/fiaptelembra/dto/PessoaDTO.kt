@@ -11,7 +11,11 @@ data class PessoaDTO(
 ) {
 
     fun toPessoa(): Pessoa {
-        return Pessoa(id, nome!!, telefone!!, Cliente(id=cliente))
+        return toPessoa(Cliente(id=cliente))
+    }
+
+    fun toPessoa(cliente: Cliente): Pessoa {
+        return Pessoa(id, nome!!, telefone!!, cliente)
     }
 
 }
