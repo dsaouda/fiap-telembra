@@ -1,36 +1,43 @@
 package com.github.dsaouda.fiaptelembra.model
 
+import com.github.dsaouda.fiaptelembra.dto.LembreteDTO
 import java.util.*
 import javax.persistence.*
 
 @Entity
 @Table(name="lembrete")
 data class Lembrete(
-        val mensagem: String,
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long? = null,
 
-        @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "dt_enviar_lembrete")
-        val enviarEm: Date,
+    val mensagem: String? = null,
 
-        @ManyToOne(fetch= FetchType.LAZY)
-        @JoinColumn(name = "id_cliente")
-        val cliente: Cliente,
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_enviar_lembrete")
+    val enviarEm: Date? = null,
 
-        @ManyToOne(fetch= FetchType.LAZY)
-        @JoinColumn(name = "id_pessoa")
-        val pessoa: Pessoa,
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "dt_lembrete_enviado")
+    val enviadaEm: Date? = null,
 
-        @Temporal(TemporalType.TIMESTAMP)
-        @Column(name = "dt_lembrete_enviado")
-        val enviadaEm: Date? = null,
+    @Enumerated(EnumType.STRING)
+    val status: Status? = null,
 
-        @Enumerated(EnumType.STRING)
-        val status: Status? = null,
+    @Column(name = "status_mensagem")
+    val mensagemStatus: String? = null,
 
-        @Column(name = "status_mensagem")
-        val mensagemStatus: String = "",
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name = "id_pessoa")
+    val pessoa: Pessoa? = null,
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null
-)
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name = "id_cliente")
+    val cliente: Cliente? = null
+) {
+
+    fun toDTO(): LembreteDTO {
+        return LembreteDTO(id, mensagem, enviarEm,  enviadaEm, status, mensagemStatus, pessoa?.id, cliente?.id)
+    }
+}
+

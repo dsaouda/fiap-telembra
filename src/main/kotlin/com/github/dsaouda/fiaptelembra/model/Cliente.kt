@@ -1,6 +1,6 @@
 package com.github.dsaouda.fiaptelembra.model
 
-import com.github.dsaouda.fiaptelembra.response.ClienteJson
+import com.github.dsaouda.fiaptelembra.dto.ClienteDTO
 import javax.persistence.*
 
 @Entity
@@ -9,12 +9,12 @@ data class Cliente(
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-    val nome: String,
+    val nome: String?=null,
     val ativo: Boolean = true
 ) {
 
-    fun toJson(): ClienteJson {
-        return ClienteJson(id, nome, ativo)
+    fun toJson(): ClienteDTO {
+        return ClienteDTO(id, nome, ativo)
     }
 
 }
