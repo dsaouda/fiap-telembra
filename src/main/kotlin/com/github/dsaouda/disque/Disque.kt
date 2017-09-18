@@ -6,6 +6,7 @@ import biz.paluch.spinach.api.AddJobArgs
 import biz.paluch.spinach.api.DisqueConnection
 import biz.paluch.spinach.api.Job
 import biz.paluch.spinach.api.sync.DisqueCommands
+import com.lambdaworks.redis.RedisCommandTimeoutException
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
@@ -42,12 +43,18 @@ class Disque {
 
     fun deamonGetJob(queue: String): Job<String, String> {
         while(true) {
-            val job = sync.getjob(30, TimeUnit.SECONDS, queue)
-            if (job == null) {
-                continue;
+
+            try {
+                val job = sync.getjob(30, TimeUnit.SECONDS, queue)
+                if (job == null) {
+                    continue;
+                }
+
+                return job;
+            } catch (e: RedisCommandTimeoutException) {
+                sync.ping()
             }
 
-            return job;
         }
     }
 

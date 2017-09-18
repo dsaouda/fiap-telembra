@@ -11,6 +11,8 @@ import com.github.dsaouda.totalvoice.service.TTSService
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.context.annotation.Scope
+import org.springframework.web.context.annotation.RequestScope
 
 @Configuration
 class Config {
@@ -25,7 +27,14 @@ class Config {
 
     @Bean
     @Value("\${disque}")
-    fun getDisque(host: String) = Disque(host)
+    fun getDisque(host: String): Disque {
+
+        println("\n\n================================\n\n")
+        println("\n\nINICIO DE DISQUE\n\n")
+        println("\n\n================================\n\n")
+
+        return Disque(host)
+    }
 
 
     @Bean
