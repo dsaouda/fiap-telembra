@@ -1,3 +1,5 @@
+import com.github.dsaouda.fiaptelembra.model.Cliente
+import com.github.dsaouda.fiaptelembra.token.Token
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.google.gson.annotations.SerializedName

@@ -21,13 +21,15 @@ data class Login(
 
     val senha: String? = null,
 
+    val token: String? = null,
+
     @ManyToOne(fetch=FetchType.LAZY, optional=false)
     @JoinColumn(name = "id_cliente")
     val cliente: Cliente? = null
 ) {
 
     fun toDTO(): LoginDTO {
-        return LoginDTO(id, nome, email, senha, cliente?.id)
+        return LoginDTO(id, nome, email, senha, token, cliente?.id)
     }
 
 }

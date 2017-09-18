@@ -1,6 +1,6 @@
 package com.github.dsaouda.fiaptelembra.controller
 
-import com.github.dsaouda.fiaptelembra.dto.LembreteDTO
+import com.github.dsaouda.fiaptelembra.dto.LembreteCreateDTO
 import com.github.dsaouda.fiaptelembra.model.Cliente
 import com.github.dsaouda.fiaptelembra.repository.LembreteRepository
 import org.springframework.http.HttpStatus
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*
 class LembreteController constructor (private val repository: LembreteRepository) {
 
     @PostMapping
-    fun create(@RequestBody lembreteDTO: LembreteDTO): ResponseEntity<Any> {
-        val lembrete = lembreteDTO.toLembrete()
+    fun create(@RequestBody lembreteDTO: LembreteCreateDTO): ResponseEntity<Any> {
+        val lembrete = lembreteDTO.toLembrete(Cliente(1))
         repository.save(lembrete)
-        return ResponseEntity<Any>(lembrete.toDTO(), HttpStatus.CREATED)
+        return ResponseEntity<Any>(lembrete, HttpStatus.CREATED)
     }
 
     @GetMapping

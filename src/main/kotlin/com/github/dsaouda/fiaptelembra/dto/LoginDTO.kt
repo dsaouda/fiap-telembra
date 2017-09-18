@@ -9,11 +9,12 @@ data class LoginDTO(
     val nome: String? = null,
     val email: String? = null,
     val senha: String? = null,
+    val token: String? = null,
     val cliente: Long? = null
 ) {
 
     fun toLogin(): Login {
-        return Login(id, nome, email, senha, Cliente(id=cliente))
+        return Login(id, nome, email, senha, token, Cliente(id=cliente))
     }
 
 }

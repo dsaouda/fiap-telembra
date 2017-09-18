@@ -9,7 +9,7 @@ data class ClienteDTO(
 ) {
 
     fun toCliente(): Cliente {
-        return Cliente(id, nome!!, ativo!!)
+        return Cliente(id, nome, ativo!!)
     }
 
 }

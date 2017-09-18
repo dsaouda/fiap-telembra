@@ -27,9 +27,10 @@ data class Lembrete(
     @Column(name = "status_mensagem")
     val mensagemStatus: String? = null,
 
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "id_pessoa")
-    val pessoa: Pessoa? = null,
+    //@ManyToOne(fetch= FetchType.LAZY)
+    //@JoinColumn(name = "id_pessoa")
+    @Column(name = "id_pessoas")
+    val pessoas: String? = null,
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "id_cliente")
@@ -37,7 +38,7 @@ data class Lembrete(
 ) {
 
     fun toDTO(): LembreteDTO {
-        return LembreteDTO(id, mensagem, enviarEm,  enviadaEm, status, mensagemStatus, pessoa?.id, cliente?.id)
+        return LembreteDTO(id, mensagem, enviarEm,  enviadaEm, status, mensagemStatus, pessoas, cliente?.id)
     }
 }
 

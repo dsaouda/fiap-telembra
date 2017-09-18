@@ -27,18 +27,18 @@ class PessoaController {
     fun get(@PathVariable("id") id: Long): ResponseEntity<Any> {
         val pessoa = repository.findOne(id).toDTO()
 
-        return ResponseEntity<Any>(pessoa, HttpStatus.CREATED)
+        return ResponseEntity<Any>(pessoa, HttpStatus.OK)
     }
 
     @GetMapping
     fun all(): ResponseEntity<Any> {
         val pessoas = repository.findAll(Cliente(1))
-        return ResponseEntity<Any>(pessoas, HttpStatus.CREATED)
+        return ResponseEntity<Any>(pessoas, HttpStatus.OK)
     }
 
     @DeleteMapping("/{id}")
     fun delete(@PathVariable("id") id: Long): ResponseEntity<Any> {
         repository.delete(id)
-        return ResponseEntity<Any>(HttpStatus.CREATED)
+        return ResponseEntity<Any>(HttpStatus.OK)
     }
 }

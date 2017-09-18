@@ -22,8 +22,10 @@ class LoginController {
     @PostMapping
     fun create(@RequestBody loginDTO: LoginDTO): ResponseEntity<Any> {
 
-        val login = loginDTO.toLogin()
-        repository.save(login)
+        val login = repository.findFirstByEmailAndSenha(loginDTO.email!!, loginDTO.senha!!)
+        if (login == null) {
+            return ResponseEntity<Any>("email e/ou senha não são válidos", HttpStatus.FORBIDDEN)
+        }
 
         return ResponseEntity<Any>(login.toDTO(), HttpStatus.CREATED)
     }

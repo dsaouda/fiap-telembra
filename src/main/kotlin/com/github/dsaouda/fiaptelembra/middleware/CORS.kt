@@ -29,7 +29,7 @@ class CORS : Filter {
         response.setHeader("Access-Control-Allow-Origin", "*")
         response.setHeader("Access-Control-Allow-Credentials", "true") //permite armazenar cookie??
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTIONS");
-        response.setHeader("Access-Control-Allow-Headers", "Content-Type")
+        response.setHeader("Access-Control-Allow-Headers", "Content-Type, x-api-key")
 
         if (request.method == "OPTIONS") {
             response.status = HttpServletResponse.SC_OK
