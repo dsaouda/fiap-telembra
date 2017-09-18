@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import com.github.dsaouda.disque.Disque
 import com.github.dsaouda.totalvoice.TotalVoice
 import com.github.dsaouda.totalvoice.interceptor.AccessTokenInterceptor
 import com.github.dsaouda.totalvoice.service.TTSService
@@ -20,6 +21,11 @@ class Config {
         val interceptor = AccessTokenInterceptor(token)
         return TotalVoice(interceptor).tts()
     }
+
+
+    @Bean
+    @Value("\${disque}")
+    fun getDisque(host: String) = Disque(host)
 
 
     @Bean

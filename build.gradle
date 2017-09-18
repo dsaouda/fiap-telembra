@@ -31,7 +31,6 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compile 'org.springframework.boot:spring-boot-starter-web'
@@ -40,8 +39,7 @@ dependencies {
 	compile 'mysql:mysql-connector-java:5.1.44'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-
 	compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.8.8'
-
+    compile 'biz.paluch.redis:spinach:0.3'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
