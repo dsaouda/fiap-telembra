@@ -2,7 +2,17 @@
 
 Aplicação que envia notificação via celular ou telefone fixo utilizando um sistema de voz ou texto chamado [total voice](http://www.totalvoice.com.br)
 
+## frontend ui
+
+O frontend está disponível no repositório https://github.com/dsaouda/fiap-telembra-ui
+
 # Usando docker para montar a infra necessária
+
+## Spring Boot
+
+```bash
+docker run --rm -p 8080:8080 -v "$PWD":/www -w /www openjdk:8 java -jar /www/build/java.jar
+```
 
 ## MySQL
 
@@ -19,7 +29,7 @@ mais detalhes sobre o container https://hub.docker.com/_/mysql/
 Para realizar alguma administração no banco de dados o [PHPMyAdmin](https://www.phpmyadmin.net/) é uma ótima opção. Não é uma instalação obrigatória
 
 ```bash
-docker run --name phpmyadmin -d --link fiap-mysql-telembra:db -p 8080:80 phpmyadmin/phpmyadmin
+docker run --name phpmyadmin -d --link fiap-mysql-telembra:db -p 8000:80 phpmyadmin/phpmyadmin
 ```
 mais detalhes sobre o container https://hub.docker.com/r/phpmyadmin/phpmyadmin/
 
@@ -30,4 +40,5 @@ docker run -p 7711:7711 -d richnorth/disque
 ```
 
 mais detalhes sobre o container https://hub.docker.com/r/richnorth/disque/
+
 mais detalhes sobre o disque https://github.com/antirez/disque
