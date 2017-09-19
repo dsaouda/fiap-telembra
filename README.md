@@ -1,6 +1,6 @@
 # fiap-telembra
 
-Aplicação que envia notificação via celular ou telefone fixo utilizando um sistema de voz ou texto chamado [total voice](http://www.totalvoice.com.br)
+Aplicação que envia notificação via celular ou telefone fixo utilizando um sistema de voz ou texto chamado [TotalVoice](http://www.totalvoice.com.br)
 
 ## frontend ui
 
