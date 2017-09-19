@@ -10,9 +10,22 @@ O frontend está disponível no repositório https://github.com/dsaouda/fiap-tel
 
 ## Spring Boot
 
+./gradlew build -x test
+
 ```bash
-docker run --rm -p 8080:8080 -v "$PWD":/www -w /www openjdk:8 java -jar /www/build/java.jar
+docker run --rm -p 8080:8080 -v "$PWD":/www -w /www openjdk:8 java -jar build/libs/fiap-telembra-1.0.0.jar
 ```
+
+Iniciando somente CLI para usar o disque-server
+
+```bash
+docker run --rm -p 8080:8080 -v "$PWD":/www -w /www openjdk:8 java -jar build/libs/fiap-telembra-1.0.0.jar cli
+```
+
+```bash
+shell:> pl
+```
+
  - https://hub.docker.com/_/openjdk/
  - http://start.spring.io/
  - https://projects.spring.io/spring-shell/
