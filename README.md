@@ -13,6 +13,10 @@ O frontend está disponível no repositório https://github.com/dsaouda/fiap-tel
 ```bash
 docker run --rm -p 8080:8080 -v "$PWD":/www -w /www openjdk:8 java -jar /www/build/java.jar
 ```
+ - https://hub.docker.com/_/openjdk/
+ - http://start.spring.io/
+ - https://projects.spring.io/spring-shell/
+ - https://projects.spring.io/spring-boot/
 
 ## MySQL
 
@@ -22,7 +26,7 @@ O comando abaixo iniciará o mysql com o banco de dados populado. O banco e senh
 docker run --name fiap-mysql-telembra -p 3306:3306 -v $(pwd)/docs:/docker-entrypoint-initdb.d/ -e MYSQL_DATABASE=fiap_telembra -e MYSQL_ROOT_PASSWORD=<PASSWORD> -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 ```
 
-mais detalhes sobre o container https://hub.docker.com/_/mysql/
+https://hub.docker.com/_/mysql/
 
 ## PHPMyAdmin
 
@@ -31,7 +35,7 @@ Para realizar alguma administração no banco de dados o [PHPMyAdmin](https://ww
 ```bash
 docker run --name phpmyadmin -d --link fiap-mysql-telembra:db -p 8000:80 phpmyadmin/phpmyadmin
 ```
-mais detalhes sobre o container https://hub.docker.com/r/phpmyadmin/phpmyadmin/
+https://hub.docker.com/r/phpmyadmin/phpmyadmin/
 
 ## Disque, an in-memory, distributed job queue
 
@@ -39,6 +43,5 @@ mais detalhes sobre o container https://hub.docker.com/r/phpmyadmin/phpmyadmin/
 docker run -p 7711:7711 -d richnorth/disque
 ```
 
-mais detalhes sobre o container https://hub.docker.com/r/richnorth/disque/
-
-mais detalhes sobre o disque https://github.com/antirez/disque
+ - https://hub.docker.com/r/richnorth/disque/
+ - https://github.com/antirez/disque
