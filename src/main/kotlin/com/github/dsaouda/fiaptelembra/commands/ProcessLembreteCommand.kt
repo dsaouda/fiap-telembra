@@ -64,7 +64,7 @@ class ProcessLembreteCommand {
                 println("response => ${response}")
             }
 
-            val status = if (response?.code() === 200) Status.ENVIADO_SUCESSO else Status.ENVIADO_ERRO
+            val status = if (response?.code() == 200) Status.ENVIADO_SUCESSO else Status.ENVIADO_ERRO
 
             repoLembrete.save(lembrete.copy(enviadaEm = Date(), status=status, mensagemStatus = response?.message()))
             disque.ackjob(job.id)

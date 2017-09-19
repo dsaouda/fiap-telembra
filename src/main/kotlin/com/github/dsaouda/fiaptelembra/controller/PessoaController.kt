@@ -1,23 +1,20 @@
 package com.github.dsaouda.fiaptelembra.controller
 
+import com.github.dsaouda.fiaptelembra.component.Session
 import com.github.dsaouda.fiaptelembra.dto.PessoaDTO
 import com.github.dsaouda.fiaptelembra.model.Cliente
 import com.github.dsaouda.fiaptelembra.repository.PessoaRepository
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/pessoa")
-class PessoaController {
-
-    @Autowired
-    lateinit var repository: PessoaRepository
+class PessoaController (private val repository: PessoaRepository, private val session: Session) {
 
     @PostMapping
     fun create(@RequestBody pessoaDTO: PessoaDTO): ResponseEntity<Any> {
-        val pessoa = pessoaDTO.toPessoa(Cliente(1))
+        val pessoa = pessoaDTO.toPessoa(session.cliente())
         repository.save(pessoa)
 
         return ResponseEntity<Any>(pessoa.toDTO(), HttpStatus.CREATED)
@@ -32,7 +29,7 @@ class PessoaController {
 
     @GetMapping
     fun all(): ResponseEntity<Any> {
-        val pessoas = repository.findAll(Cliente(1))
+        val pessoas = repository.findAll(session.cliente())
         return ResponseEntity<Any>(pessoas, HttpStatus.OK)
     }
 

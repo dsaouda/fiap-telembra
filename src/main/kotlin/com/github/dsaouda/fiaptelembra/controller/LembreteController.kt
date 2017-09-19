@@ -1,6 +1,7 @@
 package com.github.dsaouda.fiaptelembra.controller
 
 import com.github.dsaouda.disque.Disque
+import com.github.dsaouda.fiaptelembra.component.Session
 import com.github.dsaouda.fiaptelembra.dto.LembreteCreateDTO
 import com.github.dsaouda.fiaptelembra.dto.LembreteEnviadoDTO
 import com.github.dsaouda.fiaptelembra.dto.LembreteNaoEnviadoDTO
@@ -18,15 +19,17 @@ class LembreteController {
     private val repository: LembreteRepository
     private val disque: Disque
     private val sdf = SimpleDateFormat("dd/MM/YYYY HH:mm:ss")
+    private val session: Session
 
-    constructor(repository: LembreteRepository, disque: Disque) {
+    constructor(repository: LembreteRepository, disque: Disque, session: Session) {
         this.repository = repository
         this.disque = disque
+        this.session = session
     }
 
     @PostMapping
     fun create(@RequestBody lembreteDTO: LembreteCreateDTO): ResponseEntity<Any> {
-        val lembrete = lembreteDTO.toLembrete(Cliente(1))
+        val lembrete = lembreteDTO.toLembrete(session.cliente())
         repository.save(lembrete)
 
         disque.addScheduleJob("queue", lembrete.toDTO().toJson(), lembreteDTO.getEnviarEm())
@@ -41,12 +44,12 @@ class LembreteController {
 
     @GetMapping
     fun all(): Any {
-        return repository.findByCliente(Cliente(1))
+        return repository.findByCliente(session.cliente())
     }
 
     @GetMapping("/nao-enviado")
     fun allNaoEnviado(): Any {
-        val lembretes = repository.findNaoEnviado(Cliente(1))
+        val lembretes = repository.findNaoEnviado(session.cliente())
 
         return lembretes.map{
             LembreteNaoEnviadoDTO(
@@ -61,7 +64,7 @@ class LembreteController {
     @GetMapping("/enviado")
     fun allEnviado(): Any {
 
-        val lembretes = repository.findEnviado(Cliente(1))
+        val lembretes = repository.findEnviado(session.cliente())
 
         return lembretes.map{
             LembreteEnviadoDTO(

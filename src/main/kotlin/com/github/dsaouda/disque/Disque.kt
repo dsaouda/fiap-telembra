@@ -35,8 +35,9 @@ class Disque {
         }
 
         val args = AddJobArgs.builder()
-            .delay(seconds, TimeUnit.SECONDS)
-            .build()
+                .ttl(seconds + 60, TimeUnit.SECONDS)
+                .delay(seconds, TimeUnit.SECONDS)
+                .build()
 
         return sync.addjob(queue, body, 5, TimeUnit.SECONDS, args)
     }
