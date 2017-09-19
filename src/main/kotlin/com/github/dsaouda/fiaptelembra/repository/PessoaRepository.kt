@@ -9,4 +9,7 @@ import org.springframework.data.repository.query.Param
 interface PessoaRepository : JpaRepository<Pessoa, Long> {
     @Query("select p from Pessoa p where p.cliente = :cliente")
     fun findAll(@Param("cliente") cliente: Cliente): List<Pessoa>
+
+    @Query("select p from Pessoa p where id in :ids")
+    fun findAllById(@Param("ids") ids: List<Long>): List<Pessoa>
 }

@@ -28,11 +28,6 @@ class Config {
     @Bean
     @Value("\${disque}")
     fun getDisque(host: String): Disque {
-
-        println("\n\n================================\n\n")
-        println("\n\nINICIO DE DISQUE\n\n")
-        println("\n\n================================\n\n")
-
         return Disque(host)
     }
 

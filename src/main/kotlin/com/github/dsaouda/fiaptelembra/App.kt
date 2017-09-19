@@ -7,5 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 class App
 
 fun main(args: Array<String>) {
-    SpringApplication.run(App::class.java, *args)
+    val cli = SpringApplication(App::class.java)
+    cli.setWebEnvironment(true)
+    cli.run(*args)
 }
