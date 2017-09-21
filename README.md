@@ -36,7 +36,7 @@ shell:> pl
 O comando abaixo iniciará o mysql com o banco de dados populado. O banco e senha são definidos nas variáveis MYSQL_DATABASE e MYSQL_ROOT_PASSWORD respectivamente, já o usuário por padrão é root.
 
 ```bash
-docker run --name fiap-mysql-telembra -p 3306:3306 -v $(pwd)/docs:/docker-entrypoint-initdb.d/ -e MYSQL_DATABASE=fiap_telembra -e MYSQL_ROOT_PASSWORD=<PASSWORD> -d mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+docker run --name fiap_mysql_telembra -p 3306:3306 -v `pwd`/docs:/docker-entrypoint-initdb.d/ -e MYSQL_DATABASE=fiap_telembra -e MYSQL_ROOT_PASSWORD=dsaouda -d mysql
 ```
 
 https://hub.docker.com/_/mysql/
@@ -46,7 +46,7 @@ https://hub.docker.com/_/mysql/
 Para realizar alguma administração no banco de dados o [PHPMyAdmin](https://www.phpmyadmin.net/) é uma ótima opção. Não é uma instalação obrigatória
 
 ```bash
-docker run --name phpmyadmin -d --link fiap-mysql-telembra:db -p 8000:80 phpmyadmin/phpmyadmin
+docker run --name phpmyadmin -d --link fiap_mysql_telembra:db -p 8000:80 phpmyadmin/phpmyadmin
 ```
 https://hub.docker.com/r/phpmyadmin/phpmyadmin/
 
