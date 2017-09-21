@@ -53,7 +53,7 @@ https://hub.docker.com/r/phpmyadmin/phpmyadmin/
 ## Disque, an in-memory, distributed job queue
 
 ```bash
-docker run -p 7711:7711 -d richnorth/disque
+docker run --name disque -p 7711:7711 -d richnorth/disque
 ```
 
  - https://hub.docker.com/r/richnorth/disque/
