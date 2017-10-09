@@ -57,7 +57,7 @@ class ProcessLembreteCommand {
 
             val pessoas = repoPessoa.findAllById(ids!!)
             pessoas.forEach{
-                val tts = TTS(it.telefone!!, job.body, bina)
+                val tts = TTS(it.telefone!!, json.mensagem!!, bina)
 
                 println("request total voice => ${tts}")
                 response = totalVoice.send(tts).execute()
