@@ -23,12 +23,10 @@ docker run -it -p8081:8080 --rm -v `pwd`:/srv -w /srv openjdk:8 java -jar build/
 
 ```bash
 docker run -it --rm -v `pwd`:/srv -w /srv openjdk:8 java -jar build/libs/fiap-telembra-1.0.0.jar cli
-shell:> pl
 ```
 
  - https://hub.docker.com/_/openjdk/
  - http://start.spring.io/
- - https://projects.spring.io/spring-shell/
  - https://projects.spring.io/spring-boot/
 
 ## MySQL
