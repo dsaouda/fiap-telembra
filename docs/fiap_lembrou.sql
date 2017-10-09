@@ -42,7 +42,7 @@ CREATE TABLE `lembrete` (
   `dt_lembrete_enviado` datetime DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status_mensagem` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `mensagem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `mensagem` TEXT COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------

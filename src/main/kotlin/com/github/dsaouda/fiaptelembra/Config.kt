@@ -31,7 +31,7 @@ class Config {
         return Disque(host)
     }
 
-
+    //necessário para o kotlin
     @Bean
     fun getObjectMapper(): ObjectMapper {
         val mapper = ObjectMapper()
